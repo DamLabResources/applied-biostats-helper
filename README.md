@@ -30,9 +30,7 @@ pip install applied-biostats-helper
 git clone https://github.com/DamLabResources/applied-biostats-helper.git
 cd applied-biostats-helper
 pip install -e .
-```
-
-## Quick Start
+```## Quick Start
 
 ### Before (Complex setup block)
 
