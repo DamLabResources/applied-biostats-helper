@@ -71,9 +71,9 @@ def download_tests(repo_url, module_name, branch='main'):
         repo_url = repo_url[:-1]
 
     # Construct download URL for the zip file
-    zip_filename = f"{module_name}-tests.zip"
+    zip_filename = f"{module_name}_tests.zip"
     # Adjust based on repo
-    download_url = f"{repo_url}/raw/{branch}/tests/{module_name}/{zip_filename}"
+    download_url = f"{repo_url}/raw/{branch}/tests/{zip_filename}"
     
     print(f"Downloading tests from: {download_url}")
     

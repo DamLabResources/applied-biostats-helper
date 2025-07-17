@@ -43,9 +43,9 @@ dev = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/your-org/applied-biostats-helper"
-"Bug Reports" = "https://github.com/your-org/applied-biostats-helper/issues"
-"Source" = "https://github.com/your-org/applied-biostats-helper"
+"Homepage" = "https://github.com/DamLabResources/applied-biostats-helper"
+"Bug Reports" = "https://github.com/DamLabResources/applied-biostats-helper/issues"
+"Source" = "https://github.com/DamLabResources/applied-biostats-helper"
 
 [tool.setuptools.packages.find]
 where = ["src"]
