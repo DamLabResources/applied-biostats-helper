@@ -54,7 +54,7 @@ def ensure_dependencies():
             ], check=True)
 
 
-def download_tests(module_name, repo_url=None, branch='main'):
+def download_tests(module_name, repo_url, branch='main'):
     """
     Download and extract test files from GitHub repository.
     
@@ -65,9 +65,6 @@ def download_tests(module_name, repo_url=None, branch='main'):
     
     """
     
-    if repo_url is None:
-        repo_url = 'https://github.com/DamLabResources/quantitative-reasoning-in-biology'
-    
     # Clean up repo URL
     if repo_url.endswith('.git'):
         repo_url = repo_url[:-4]
@@ -75,7 +72,7 @@ def download_tests(module_name, repo_url=None, branch='main'):
         repo_url = repo_url[:-1]
 
     # Construct download URL for the zip file
-    zip_filename = f"{module_name}_tests.zip"
+    zip_filename = f"{module_name}_files.zip"
     # Adjust based on repo
     #raw/refs/heads/main/
     download_url = f"{repo_url}/raw/refs/heads/{branch}/tests/{zip_filename}"
@@ -136,7 +133,7 @@ def init_grader(assignment_type, colab=None):
     return grader
 
 
-def setup_environment(assignment_name, github_repo_url, branch='main'):
+def setup_environment(assignment_name, github_repo_url=None, branch='main'):
     """
     One-line setup for Applied Biostats course environments.
     
@@ -161,18 +158,21 @@ def setup_environment(assignment_name, github_repo_url, branch='main'):
     """
     # Suppress warnings for cleaner output
     warnings.filterwarnings("ignore")
+
+    if github_repo_url is None:
+        github_repo_url = 'https://github.com/DamLabResources/quantitative-reasoning-in-biology'
     
     print(f"Setting up environment for {assignment_name}...")
 
     module_name, assignment_type = assignment_name.split('_')
     
     # Ensure dependencies are installed
-    ensure_dependencies()
+    # ensure_dependencies()
     
     # Check if tests already exist (avoid re-downloading)
     if not is_tests_present():
         # Download and extract tests
-        download_tests(github_repo_url, module_name, branch)
+        download_tests(module_name, github_repo_url, branch)
     
     # Initialize and return grader
     grader = init_grader(assignment_type)
