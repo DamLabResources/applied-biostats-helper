@@ -54,16 +54,20 @@ def ensure_dependencies():
             ], check=True)
 
 
-def download_tests(repo_url, module_name, branch='main'):
+def download_tests(module_name, repo_url=None, branch='main'):
     """
     Download and extract test files from GitHub repository.
     
     Args:
-        repo_url (str): GitHub repository URL
         module_name (str): Name of the module (e.g., 'Module02')
+        repo_url (str): GitHub repository URL
         branch (str): Git branch to download from (default: 'main')
     
     """
+    
+    if repo_url is None:
+        repo_url = 'https://github.com/DamLabResources/quantitative-reasoning-in-biology'
+    
     # Clean up repo URL
     if repo_url.endswith('.git'):
         repo_url = repo_url[:-4]
@@ -73,7 +77,8 @@ def download_tests(repo_url, module_name, branch='main'):
     # Construct download URL for the zip file
     zip_filename = f"{module_name}_tests.zip"
     # Adjust based on repo
-    download_url = f"{repo_url}/raw/{branch}/tests/{zip_filename}"
+    #raw/refs/heads/main/
+    download_url = f"{repo_url}/raw/refs/heads/{branch}/tests/{zip_filename}"
     
     print(f"Downloading tests from: {download_url}")
     
