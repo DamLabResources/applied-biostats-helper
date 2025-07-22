@@ -22,6 +22,12 @@ def is_colab():
         return True
     except ImportError:
         return False
+    
+def is_development():
+    """
+    Detect if running in development environment.
+    """
+    return os.path.exists('lab-tests/stub.txt') or os.path.exists('walkthrough-tests/stub.txt')
 
 
 def is_tests_present():
@@ -156,6 +162,10 @@ def setup_environment(assignment_name, github_repo_url=None, branch='main'):
         >>> grader = setup_environment('Module02_walkthrough', 
         ...                           'https://github.com/your-org/applied_biostats')
     """
+    if is_development():
+        print("Running in development mode")
+        return
+    
     # Suppress warnings for cleaner output
     warnings.filterwarnings("ignore")
 

@@ -97,6 +97,10 @@ For issues and questions:
 
 ## Changelog
 
+### v0.2.0
+ - Adding development environment detection
+
+
 ### v0.1.0
 - Initial release
 - Basic environment setup functionality
